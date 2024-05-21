@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixing Colors</title>
+    <style>
+         
+
+        #mixing {
+            border: 1px solid black;
+            padding: 20px;
+            display: flex;
+            margin: 100px;
+            background-image: url(balloon\ in\ the\ air\ shutterstock.jpg) 
+        }
+
+        #firstColor {
+            border: 1px solid black;
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+            
+        }
+
+        #SecondColor {
+            border: 1px solid black;
+            width: 300px;
+            height: 300px;
+            margin: 10px;   
+        }
+
+
+        #ThirdColor {
+            border: 1px solid black;
+            width: 300px;
+            height: 300px;
+            margin: 10px;    
+        }
+
+
+        #FinalColor {
+            border: 2px solid black;
+            width: 100%;
+            height: 200px;
+            
+            margin-top: 5%;
+
+        }
+
+        .divColr {
+
+            background-image: url(balloon\ in\ the\ air\ shutterstock.jpg);
+            border: 1px solid #13264c;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(54, 43, 43, 0.1);
+            padding: 20px;
+            max-width: 300px; 
+            text-align: center; 
+        }
+        #FinalBtn {
+           background-image: url();
+           padding: 4%;
+           justify-content: center;
+           margin-left: 40%;
+           color: blue;
+           font-size: larger;
+           font-weight: bolder;
+
+        }
+
+        .firstClrBtn{
+            background-color: chocolate;
+            position: relative;
+            padding: 2%;
+            color: greenyellow;
+            font-size: larger;
+            font-weight: bold;
+            
+        }
+        #title {
+            font-size: 500%;
+            color: rgb(3, 67, 62);
+            
+            padding: 5%;
+            justify-content: center;
+            
+        }
+        #colors{
+        justify-content: center;
+       
+          display: flex;
+            gap: 30px;
+        }
+
+        .h2-finalColor {
+            text-align: center;
+            background-image: url(redLines.png);
+            color: azure;
+            padding: 3%;
+        }
+
+        body{
+            background-image: url(kids-children-hands-colour.jpg);
+        }
+        .MixH2 {
+            text-align: center;
+            background-color: aquamarine;
+        }
+        
+    </style>
+</head>
+<body>  
+    <h1 id="title">Mixing Colors</h1>
+    <div id="colors"></div>
+    <div id="mixing"> 
+
+        <div id="firstColor"></div>
+        <div id="SecondColor"></div>
+        <div id="ThirdColor"></div>
+
+    </div>
+
+    <h2 class="MixH2">Click the Button below to see the result </h2>
+    <button id="FinalBtn" onclick="Mixing()">Click me</button>
+    <h2 class="h2-finalColor">Final Color</h2>
+    <div id="FinalColor"></div>
+    
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js">  </script>
+
+<script>
+
+    var RGBarr=[]
+ ///// here we are creating our colors with the >>>>(PercentageOfRed), the(name), the id 
+
+
+
+/// red, green , blue
+
+
+function createColorRed(Percentage,name,id) {
+    RGBarr.push(Percentage)
+    return {
+    Percentage:Percentage,
+    name:name,
+    id:id
+} 
+
+
+}
+
+function createColorBlue(Percentage,name,id) {
+    RGBarr.push(Percentage)
+return {
+    Percentage:Percentage,
+    name:name,
+    id:id
+
+}
+
+}
+
+
+function createColorGreen(Percentage,name,id) {
+    RGBarr.push(Percentage)
+    return {
+    Percentage:Percentage,
+    name:name,
+    id:id
+
+}
+
+}
+
+
+
+
+
+
+var Colors = []
+
+//// here we are creating 3 instances from EACH color
+var colorRed1 = createColorRed(100,"Color-red",10)
+var colorGreen1= createColorGreen(100,"Color-green",12)
+var colorBlue1 = createColorBlue(100,"Color-blue",11)
+
+
+
+
+function displayColorRed(TheColor) {
+    $("#colors").append(
+        `<div id="${TheColor.id}" class="divColr">
+            <div style="background-color: rgb(${TheColor.Percentage}, 0,0 ); width: 200px; height: 200px; border: 1px solid black;"></div> 
+            <h2>${TheColor.name} by Percentage</h2>
+            <h3>from: 0 - 255!</h3>
+
+            <input id="inp1">
+            <button id="btn1_${TheColor.id}" onclick="addColortoBig1(${TheColor.Percentage})" class="firstClrBtn">add</button>
+        </div>`
+    );
+}
+
+
+function displayColorGreen(TheColor) {
+    $("#colors").append(
+        `<div id="${TheColor.id}" class="divColr">
+            <div style="background-color: rgb(0, ${TheColor.Percentage}, 0); width: 200px; height: 200px; border: 1px solid black;"></div> 
+            <h2>${TheColor.name} byPercentage</h2>
+            <h3>from: 0 - 255!</h3>
+            <input id="inp2">
+            <button id="btn2_${TheColor.id}" onclick="addColortoBig2(${TheColor.Percentage})" class="firstClrBtn">add</button>
+        </div>`
+    );
+}
+
+
+
+function displayColorBlue(TheColor) {
+    $("#colors").append(
+        `<div id="${TheColor.id}" class="divColr">
+            <div style="background-color: rgb(0, 0, ${TheColor.Percentage}); width: 200px; height: 200px; border: 1px solid black;"></div> 
+            <h2>${TheColor.name} by Percentage</h2>
+            <br>
+            <h3>from: 0 - 255!</h3>
+            <input id="inp3">
+            <button id="btn3_${TheColor.id}" onclick="addColortoBig3()" class="firstClrBtn">add</button>
+        </div>`
+    );
+}
+
+
+
+
+
+
+displayColorRed(colorRed1)
+
+displayColorGreen(colorGreen1)
+
+displayColorBlue(colorBlue1)
+
+
+
+//<div id="firstColor"></div>
+//<div id="SecondColor"></div>
+//<div id="ThirdColor"></div>
+
+
+var addColortoBig1 = function(elem) {
+    var elem= $('#inp1').val()
+
+    console.log(elem,"jheehheeheh")
+     $("#firstColor").css("background-color", `rgb(${elem},0, 0)`);
+}
+
+var addColortoBig2 = function() {
+    var elem= $('#inp2').val()
+    $("#SecondColor").css("background-color", `rgb(0, ${elem}, 0)`);
+
+}
+
+var addColortoBig3 = function(elem) {
+    var elem= $('#inp3').val()
+
+    $("#ThirdColor").css("background-color", `rgb(0, 0, ${elem})`);
+
+}
+
+
+
+// this function will mix three colors
+
+
+var button1 = document.getElementById("FinalBtn")
+
+var tt1 = RGBarr[0]
+var tt2 = RGBarr[1]
+var tt3 = RGBarr[2]
+
+function Mixing(){
+
+    $("#FinalColor").css("background-color", "rgb(" + tt1 + "," + tt2 + "," + tt3 + ")");
+
+}
+
+
+
+
+</script>
+</html>
